@@ -1,27 +1,40 @@
+var targetNumber;
+var counter;
+var win = 0;
+var losses = 0;
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
-
-var targetNumber=getRandomArbitrary(19,120);
-console.log(targetNumber);
+function newGame(){
+    targetNumber=getRandomArbitrary(19,120);
+    console.log(targetNumber);
 $("#number-to-guess").text(targetNumber);
-var counter = 0;
-var win = 0;
-var losses = 0;
+ counter = 0;
+ $("#current-number").html(counter);
+ var crystal = $(".crystal-image > img");
+
+crystal.each(function(){
+
+var newArr = arr.sort(function (a, b) {
+    
+    return 0.5 - Math.random()
+});
+console.log(newArr);
+console.log("newArr ", newArr.pop());
+$(this).attr("data-random", newArr.pop());
+});
+}
+
+
 
 // var x=getRandomArbitrary(0,11);
 // $(".crystal-image").attr("data-crystalvalue", x);
-var crystal = $(".crystal-image");
 
-crystal.each(function(){
-  var random = getRandomArbitrary(0,11);
-  console.log(random);
-  $(this).attr("data-random", random);
-});
 
    
-$(".crystal-image").on("click",function(){
+$(".crystal-image > img").on("click",function(){
     var crystalValue=($(this).attr("data-random"));
     crystalValue=parseInt(crystalValue);
     console.log(crystalValue);
@@ -33,12 +46,14 @@ $(".crystal-image").on("click",function(){
     if (counter===targetNumber){
         alert("you win")
         win=win+1;
-        $("#wins").html(win);
+        $("#win").html(win);
+        newGame();
     }
     else if (counter>=targetNumber){
         alert("You lose!");
         losses=losses+1;
         $("#losses").html(losses);
-
+        newGame();
     }
 });
+newGame();

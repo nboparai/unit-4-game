@@ -6,4 +6,12 @@
 }
 img{
     float: left;
+    background-color: aquamarine;
+}
+.crystal-image{
+    align-content: center;
+    background-color: aquamarine;
+}
+body{
+    background-color: aquamarine;
 }
