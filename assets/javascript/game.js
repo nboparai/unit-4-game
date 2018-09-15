@@ -2,12 +2,13 @@ var targetNumber;
 var counter;
 var win = 0;
 var losses = 0;
-var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 
 function getRandomArbitrary(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 function newGame(){
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     targetNumber=getRandomArbitrary(19,120);
     console.log(targetNumber);
 $("#number-to-guess").text(targetNumber);
